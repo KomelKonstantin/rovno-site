@@ -329,27 +329,9 @@ section {
   font-size: 14px;
 }
 
-/* ---------- Блок «Аквариумные дизайны» и «О студии» ---------- */
-.feature {
-  background: #e9e8df;
-  padding: 45px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 30px;
-  align-items: center;
-}
+/* ---------- О студии ---------- */
 
-.feature h2 {
-  font: 36px Georgia,serif;
-  font-weight: 400;
-  margin: 0 0 10px;
-}
 
-.feature p {
-  margin: 0;
-  color: #66665d;
-  max-width: 700px;
-}
 
 .about {
   display: grid;
@@ -469,15 +451,6 @@ section {
   flex-wrap: wrap;
 }
 
-.footer-bottom {
-  padding: 18px 0 30px;
-  color: var(--muted);
-  font-size: 12px;
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-}
 
 @media(max-width:600px) {
   .footer-social {
@@ -545,10 +518,6 @@ section {
     margin-top: 12px;
   }
 
-  .feature {
-    grid-template-columns: 1fr;
-    padding: 30px;
-  }
 
   .footer {
     display: block;
@@ -891,9 +860,6 @@ section,
     padding: 7px 13px;
   }
 
-  .feature {
-    padding: 24px 20px;
-  }
 
   .works,
   .gallery {
@@ -1086,26 +1052,10 @@ body::before {
   }
 }
 
-/* 3. Лёгкий перелив фона в блоке «Сложные аквариумные дизайны» */
-.feature {
-  background: linear-gradient(120deg, #e9e8df 0%, #f0ebe3 50%, #e9e8df 100%);
-  background-size: 250% 100%;
-  animation: feature-sheen 18s ease-in-out infinite alternate;
-}
-
-@keyframes feature-sheen {
-  from {
-    background-position: 0% 50%;
-  }
-  to {
-    background-position: 100% 50%;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .hero-bg::after,
   body::before,
-  .feature {
+  .design-photos {
     animation: none;
   }
 }
@@ -1142,4 +1092,151 @@ body::before {
 .gallery .photo:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 2px;
+}
+
+/* ---------- Плашки дизайнов: аквариумные, трендовые, усатые френчи ---------- */
+.designs-list {
+  display: grid;
+  gap: 18px;
+}
+
+.design {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 30px;
+  align-items: center;
+  padding: 45px;
+  border-radius: 4px;
+  color: #fff;
+  background: linear-gradient(120deg, #3b322d, #6b5449);  /* пока нет фото */
+}
+
+/* Фото на фоне: одно или несколько, рядом друг с другом */
+.design-photos {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  display: flex;
+  animation: design-drift 30s ease-in-out infinite alternate;
+}
+
+.design-photos img {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Затемнение, чтобы текст читался */
+.design::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(24, 21, 18, .85) 0%, rgba(24, 21, 18, .65) 55%, rgba(24, 21, 18, .35) 100%);
+}
+
+.design h2 {
+  font: 36px Georgia, serif;
+  font-weight: 400;
+  margin: 0 0 10px;
+}
+
+.design p {
+  margin: 0;
+  max-width: 700px;
+  color: rgba(255, 255, 255, .88);
+}
+
+.design .btn {
+  background: #fff;
+  color: var(--ink);
+}
+
+@keyframes design-drift {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+@media (max-width: 800px) {
+  .design {
+    grid-template-columns: 1fr;
+    padding: 30px 22px;
+  }
+
+  .design::before {
+    background: rgba(24, 21, 18, .72);
+  }
+
+  .design h2 {
+    font-size: 28px;
+  }
+}
+
+/* ---------- Мастера: фото и цена ---------- */
+.master-head {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.master-photo {
+  flex: 0 0 96px;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: var(--line);
+  color: var(--muted);
+  font: 40px Georgia, serif;
+}
+
+.master-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.master-head .role {
+  margin-bottom: 10px;
+}
+
+.master-price {
+  font: 22px Georgia, serif;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.master-price span {
+  display: block;
+  font: 12px Arial, Helvetica, sans-serif;
+  color: var(--muted);
+}
+
+.masters {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 800px) {
+  .masters {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Карта по высоте блока контактов (компьютер) ---------- */
+@media (min-width: 801px) {
+  .map {
+    height: auto;
+    min-height: 370px;
+    align-self: stretch;
+  }
 }

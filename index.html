@@ -105,15 +105,21 @@
         <div class="wrap">
           <div class="section-head">
             <div>
-              <div class="eyebrow">Команда «Ровно»</div>
+              <div class="eyebrow">Команда «ровно»</div>
               <h2>Наши мастера</h2>
             </div>
             <p>У каждого мастера свои сильные стороны — поможем выбрать специалиста под вашу задачу.</p>
           </div>
           <div class="masters">
             <article class="master">
-              <h3>Катерина</h3>
-              <div class="role">Скоростной мастер · сложное моделирование</div>
+              <div class="master-head">
+                <div class="master-photo">К</div>
+                <div>
+                  <h3>Катерина</h3>
+                  <div class="role">Скоростной мастер · сложное моделирование</div>
+                  <div class="master-price">3 000 ₽ <span>(снятие, маникюр и покрытие гель)</span></div>
+                </div>
+              </div>
               <ul>
                 <li>Сложные аквариумные дизайны</li>
                 <li>Наращивание на нижние и верхние формы</li>
@@ -122,8 +128,14 @@
               </ul>
             </article>
             <article class="master">
-              <h3>Екатерина</h3>
-              <div class="role">Маникюр · педикюр · ламинирование ресниц</div>
+              <div class="master-head">
+                <div class="master-photo">Е</div>
+                <div>
+                  <h3>Екатерина</h3>
+                  <div class="role">Маникюр · педикюр · ламинирование ресниц</div>
+                  <div class="master-price">3 000 ₽ <span>(снятие, маникюр и покрытие гель)</span></div>
+                </div>
+              </div>
               <ul>
                 <li>Мастер ламинирования ресниц</li>
                 <li>Маникюр и педикюр</li>
@@ -132,8 +144,14 @@
               </ul>
             </article>
             <article class="master">
-              <h3>Валерия</h3>
-              <div class="role">Наращивание · дизайн · педикюр</div>
+              <div class="master-head">
+                <div class="master-photo">В</div>
+                <div>
+                  <h3>Валерия</h3>
+                  <div class="role">Наращивание · дизайн · педикюр</div>
+                  <div class="master-price">2 700 ₽ <span>(снятие, маникюр и покрытие гель)</span></div>
+                </div>
+              </div>
               <ul>
                 <li>Наращивание на верхние формы</li>
                 <li>Разнообразные дизайны</li>
@@ -141,36 +159,36 @@
                 <li>Комбинированный маникюр с покрытием гель-лаком</li>
               </ul>
             </article>
-            <!-- ДОБАВИТЬ ДАННЫЕ: шаблон карточки мастера. Скопировать <article> внутрь .masters, заполнить поля, убрать hidden. Строки .meta без данных удалить. -->
+            <!-- ДОБАВИТЬ ФОТО МАСТЕРА: в .master-photo заменить букву на <img src="img/master-ИМЯ.jpg" alt="ИМЯ"> -->
+            <!-- ДОБАВИТЬ ДАННЫЕ: шаблон карточки мастера. Скопировать <article> внутрь .masters, заполнить поля. -->
             <template id="master-template">
               <article class="master">
-                <h3>ИМЯ</h3>
-                <div class="role">РОЛЬ</div>
+                <div class="master-head">
+                  <div class="master-photo">И</div>
+                  <div>
+                    <h3>ИМЯ</h3>
+                    <div class="role">РОЛЬ</div>
+                    <div class="master-price">ЦЕНА ₽ <span>(снятие, маникюр и покрытие гель)</span></div>
+                  </div>
+                </div>
                 <ul>
                   <li>УСЛУГА</li>
-                  <li>УСЛУГА</li>
                 </ul>
-                <div class="meta">Категория: КАТЕГОРИЯ</div>
-                <div class="meta">от ЦЕНА ₽ · ВРЕМЯ</div>
               </article>
             </template>
             <article class="master">
-              <h3>Виктория</h3>
-              <div class="role">Маникюр · педикюр</div>
+              <div class="master-head">
+                <div class="master-photo">В</div>
+                <div>
+                  <h3>Виктория</h3>
+                  <div class="role">Маникюр · педикюр</div>
+                  <div class="master-price">2 700 ₽ <span>(снятие, маникюр и покрытие гель)</span></div>
+                </div>
+              </div>
               <ul>
                 <li>SMART-педикюр</li>
                 <li>Комбинированный / аппаратный маникюр с покрытием гель-лаком</li>
               </ul>
-            </article>
-            <!-- ДОБАВИТЬ ДАННЫЕ: мастер 5 -->
-            <article class="master" hidden>
-              <h3>ИМЯ</h3>
-              <div class="role">РОЛЬ</div>
-              <ul>
-                <li>УСЛУГА</li>
-              </ul>
-              <div class="meta">Категория: КАТЕГОРИЯ</div>
-              <div class="meta">от ЦЕНА ₽ · ВРЕМЯ</div>
             </article>
           </div>
         </div>
@@ -242,13 +260,36 @@
           <button type="button" class="service-more works-more" aria-expanded="false" aria-controls="works-grid">Показать ещё</button>
         </div>
       </section>
-      <section>
-        <div class="wrap feature">
-          <div>
-            <h2>Сложные аквариумные дизайны</h2>
-            <p>Одна из особенностей студии — сложные аквариумные дизайны от Катерины. Обсудите с мастером идею и желаемый эффект при записи.</p>
-          </div>
-          <a class="btn" href="tel:+79213342858">Обсудить дизайн</a>
+      <section class="designs">
+        <div class="wrap designs-list">
+          <article class="design">
+            <div class="design-photos" aria-hidden="true"><img src="img/design-aquarium-1.jpg" alt=""><img src="img/design-aquarium-2.jpg" alt=""></div>
+            <div class="design-text">
+              <h2>Сложные аквариумные дизайны</h2>
+              <p>Одна из особенностей студии — сложные аквариумные дизайны от Катерины. Обсудите с мастером идею и желаемый эффект при записи.</p>
+            </div>
+            <!-- ДОБАВИТЬ ССЫЛКУ TG: заменить tel:+79213342858 на https://t.me/... -->
+            <a class="btn" href="tel:+79213342858">Обсудить дизайн</a>
+          </article>
+          <article class="design">
+            <!-- ДОБАВИТЬ ФОТО: фон — до 3 фото в .design-photos -->
+            <div class="design-photos" aria-hidden="true"></div>
+            <div class="design-text">
+              <h2>Трендовые дизайны</h2>
+              <p>Актуальные дизайны сезона — повторим понравившийся или подберём свой вариант. Обсудите идею с мастером при записи.</p>
+            </div>
+            <!-- ДОБАВИТЬ ССЫЛКУ TG: заменить tel:+79213342858 на https://t.me/... -->
+            <a class="btn" href="tel:+79213342858">Обсудить дизайн</a>
+          </article>
+          <article class="design">
+            <div class="design-photos" aria-hidden="true"><img src="img/design-french-1.jpg" alt=""><img src="img/design-french-2.jpg" alt=""></div>
+            <div class="design-text">
+              <h2>Усатые френчи</h2>
+              <p>Френч с тонкими «усиками» — аккуратные линии и чёткая форма. Обсудите детали с мастером при записи.</p>
+            </div>
+            <!-- ДОБАВИТЬ ССЫЛКУ TG: заменить tel:+79213342858 на https://t.me/... -->
+            <a class="btn" href="tel:+79213342858">Обсудить дизайн</a>
+          </article>
         </div>
       </section>
       <section>
@@ -277,11 +318,11 @@
               <div class="eyebrow">Ждём вас</div>
               <h2>Как нас найти</h2>
             </div>
-            <p>Будем рады видеть тебя в «Ровно» 💌</p>
+            <p>Будем рады видеть вас в «ровно» 💌</p>
           </div>
           <div class="contact">
             <div class="contact-box">
-              <h3>Студия «Ровно»</h3>
+              <h3>Студия «ровно»</h3>
               <p>📍 Ипподромный переулок, 1&nbsp;корпус&nbsp;1<br>🚇 м. Пионерская · ЖК «Приморский квартал»</p>
               <p>Онлайн-запись</p>
               <p><a class="btn" href="https://dikidi.net/812212" target="_blank" rel="noopener noreferrer">Записаться</a></p>
@@ -294,9 +335,6 @@
         </div>
       </section>
     </main>
-    <footer class="wrap">
-      <div class="footer-bottom"><strong>РОВНО</strong><span>Студия маникюра и педикюра · © 2026</span><span>Сделано с любовью</span></div>
-    </footer>
     <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Просмотр фото">
       <img alt="">
       <button type="button" class="lb-close" aria-label="Закрыть">×</button>
