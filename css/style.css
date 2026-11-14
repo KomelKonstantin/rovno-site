@@ -560,119 +560,40 @@ section {
   }
 }
 
-/* ---------- Каталог услуг DIKIDI ---------- */
-.service-catalog {
+/* ---------- Услуги и стоимость ---------- */
+.cards .card h3 {
+  margin-top: 0;
+}
+
+.cards .price {
+  margin-top: 12px;
+}
+
+.offer {
   display: grid;
-  gap: 30px;
-  margin-top: 34px;
-}
-
-.service-category h3 {
-  font: 400 27px/1.2 Georgia,serif;
-  margin: 0 0 14px;
-  color: var(--ink);
-}
-
-.service-list {
-  display: grid;
-  grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 12px;
-}
-
-.service-item {
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 18px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  grid-template-columns: 1fr 1fr;
   gap: 18px;
-  min-height: 94px;
-  box-shadow: 0 5px 18px rgba(45,39,32,.035);
+  margin-top: 18px;
 }
 
-.service-info {
-  min-width: 0;
-}
-
-.service-item h4 {
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.4;
-  margin: 0 0 10px;
-}
-
-.service-meta {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--muted);
-  font-size: 13px;
-  white-space: nowrap;
-}
-
-.service-meta i {
-  font-style: normal;
-  color: var(--rose);
-}
-
-.service-book {
-  flex: 0 0 auto;
-  text-decoration: none;
-  border: 1px solid #e7d8d2;
-  color: #8f6b62;
-  background: #f8f1ee;
-  border-radius: 30px;
-  padding: 9px 15px;
-  font-size: 12px;
-  letter-spacing: .02em;
-  transition: .2s;
-}
-
-.service-book:hover {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: #fff;
-}
-
-.service-note {
-  margin-top: 22px;
-  max-width: 760px;
+.offer .card h3 {
+  margin-top: 0;
 }
 
 .service-cta {
-  margin-top: 22px;
+  margin-top: 26px;
 }
 
-@media(max-width:760px) {
-  .service-list {
+@media (max-width: 800px) {
+  .offer {
     grid-template-columns: 1fr;
-  }
-
-  .service-category h3 {
-    font-size: 24px;
-  }
-
-  .service-item {
-    padding: 16px;
-    gap: 10px;
-  }
-
-  .service-item h4 {
-    font-size: 14px;
-  }
-
-  .service-book {
-    padding: 8px 12px;
-    font-size: 11px;
   }
 }
 
 /* ---------- Hero с фоном ---------- */
 .hero-bg {
   position: relative;
-  background: #1f1c18 url(../img/hero.jpg) center 40%/cover no-repeat;
+  background: #1f1c18 url(../img/hero.jpg) center 45%/cover no-repeat;
   color: #fff;
 }
 
@@ -699,13 +620,12 @@ section {
 }
 
 .hero-bg .hero h1 {
-  margin: 18px 0 6px;
+  margin: 18px 0 26px;
 }
 
-.hero-tag {
-  font: italic clamp(22px,3vw,30px)/1.2 Georgia,serif;
-  color: #f0d9cf;
-  margin: 0 0 24px;
+/* Строки описания не переносятся на компьютере */
+.hero-bg .hero p {
+  max-width: none;
 }
 
 .concept {
@@ -741,11 +661,7 @@ section {
   }
 }
 
-/* ---------- Свёрнутые списки услуг ---------- */
-.service-category.is-collapsed .service-item:nth-child(n+3) {
-  display: none;
-}
-
+/* ---------- Кнопка «Показать ещё» ---------- */
 .service-more {
   margin-top: 14px;
   background: none;
@@ -1130,7 +1046,7 @@ section,
   position: absolute;
   inset: 0;
   z-index: -2;
-  background: url(../img/hero.jpg) center 40% / cover no-repeat;
+  background: url(../img/hero.jpg) center 45% / cover no-repeat;
   animation: hero-drift 40s ease-in-out infinite alternate;
 }
 
@@ -1205,4 +1121,25 @@ body::before {
   .top.is-hidden {
     transform: translateY(-100%);
   }
+}
+
+/* ---------- Фото студии: увеличение по клику ---------- */
+.gallery .photo {
+  display: block;
+  width: 100%;
+  font: inherit;
+  cursor: zoom-in;
+}
+
+.gallery .photo img {
+  transition: transform .3s;
+}
+
+.gallery .photo:hover img {
+  transform: scale(1.02);
+}
+
+.gallery .photo:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
 }

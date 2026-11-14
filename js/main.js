@@ -1,30 +1,28 @@
 // Студия «Ровно» — скрипты лендинга
-// 1. Кнопки «Показать ещё / Свернуть» в услугах и в альбоме работ
-// 2. Просмотр фото работ (lightbox): стрелки, Esc, клик по фону
+// 1. Кнопка «Показать ещё / Свернуть» в альбоме работ
+// 2. Просмотр фото работ и студии (lightbox): стрелки, Esc, клик по фону
+// 3. Шапка на телефоне прячется при прокрутке вниз
 
 (function () {
   'use strict';
 
-  /* ---------- 1. Раскрытие списков ---------- */
+  /* ---------- 1. «Показать ещё» в альбоме работ ---------- */
 
-  document.querySelectorAll('.service-more').forEach(function (button) {
-    var box = button.classList.contains('works-more')
-      ? document.getElementById('works-grid')
-      : button.closest('.service-category');
-    var moreText = button.textContent;
+  var worksGrid = document.getElementById('works-grid');
+  var moreButton = document.querySelector('.works-more');
+  var moreText = moreButton.textContent;
 
-    button.addEventListener('click', function () {
-      var isOpen = box.classList.toggle('is-collapsed') === false;
-      button.setAttribute('aria-expanded', isOpen);
-      button.textContent = isOpen ? 'Свернуть' : moreText;
-    });
+  moreButton.addEventListener('click', function () {
+    var isOpen = worksGrid.classList.toggle('is-collapsed') === false;
+    moreButton.setAttribute('aria-expanded', isOpen);
+    moreButton.textContent = isOpen ? 'Свернуть' : moreText;
   });
 
-  /* ---------- 2. Lightbox ---------- */
+  /* ---------- 2. Lightbox: альбом работ и фото студии ---------- */
 
   var lightbox = document.getElementById('lb');
   var bigImage = lightbox.querySelector('img');
-  var thumbs = Array.prototype.slice.call(document.querySelectorAll('#works-grid button'));
+  var thumbs = [];          // фото текущего альбома
   var current = 0;
   var lastFocused = null;
 
@@ -35,8 +33,9 @@
     bigImage.alt = source.alt;
   }
 
-  function open(index) {
+  function open(list, index) {
     lastFocused = document.activeElement;
+    thumbs = list;
     show(index);
     lightbox.hidden = false;
     document.body.style.overflow = 'hidden';
@@ -49,8 +48,12 @@
     if (lastFocused) lastFocused.focus();
   }
 
-  thumbs.forEach(function (thumb, index) {
-    thumb.addEventListener('click', function () { open(index); });
+  // Каждый альбом листается отдельно
+  ['#works-grid button', '.gallery .photo'].forEach(function (selector) {
+    var list = Array.prototype.slice.call(document.querySelectorAll(selector));
+    list.forEach(function (thumb, index) {
+      thumb.addEventListener('click', function () { open(list, index); });
+    });
   });
 
   lightbox.querySelector('.lb-close').addEventListener('click', close);
