@@ -1193,3 +1193,16 @@ body::before {
     animation: none;
   }
 }
+
+/* ---------- Шапка на телефоне ----------
+   Видна вверху страницы и при прокрутке вверх,
+   при прокрутке вниз уезжает (класс .is-hidden ставит js/main.js). */
+@media (max-width: 800px) {
+  .top {
+    transition: transform .3s ease;
+  }
+
+  .top.is-hidden {
+    transform: translateY(-100%);
+  }
+}

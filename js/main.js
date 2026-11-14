@@ -68,4 +68,28 @@
     else if (event.key === 'ArrowLeft') show(current - 1);
     else if (event.key === 'ArrowRight') show(current + 1);
   });
+  /* ---------- 3. Шапка на телефоне: прячется при прокрутке вниз ---------- */
+
+  var header = document.querySelector('.top');
+  var mobile = window.matchMedia('(max-width: 800px)');
+  var lastY = window.scrollY;
+
+  function updateHeader() {
+    var y = window.scrollY;
+    if (!mobile.matches || y <= header.offsetHeight) {
+      header.classList.remove('is-hidden');      // верх страницы или компьютер
+    } else if (y > lastY + 4) {
+      header.classList.add('is-hidden');         // листаем вниз
+    } else if (y < lastY - 4) {
+      header.classList.remove('is-hidden');      // листаем вверх
+    }
+    if (Math.abs(y - lastY) > 4) lastY = y;
+  }
+
+  window.addEventListener('scroll', updateHeader, { passive: true });
+
+  // При переходе по шапке с клавиатуры (Tab) она всегда видна
+  header.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('focus', function () { header.classList.remove('is-hidden'); });
+  });
 })();
