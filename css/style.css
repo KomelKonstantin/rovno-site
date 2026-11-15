@@ -1913,33 +1913,40 @@ picture {
   display: contents;
 }
 
-/* ---------- О студии (текст для поиска) ---------- */
-.intro-grid {
-  display: grid;
-  grid-template-columns: .9fr 1.1fr;
-  gap: 40px;
-  align-items: start;
-}
-
-.intro h2 {
-  font: 38px/1.15 Georgia, serif;
+/* ---------- О студии — текст на первом экране ---------- */
+.hero-eyebrow {
   font-weight: 400;
-  margin: 0;
-}
-
-.intro p {
-  color: var(--muted);
-  line-height: 1.7;
   margin: 0 0 14px;
 }
 
-.intro .intro-lead {
-  font: 22px/1.45 Georgia, serif;
-  color: var(--ink);
+.hero-about {
+  max-width: 620px;
+  margin: 26px 0 30px;
 }
 
-.intro b {
-  color: var(--ink);
+.hero-about p {
+  margin: 0 0 12px;
+  line-height: 1.65;
+  opacity: .9;
+}
+
+.hero-about .hero-lead {
+  font: 22px/1.4 Georgia, serif;
+  opacity: 1;
+}
+
+@media (max-width: 800px) {
+  .hero-about {
+    margin: 20px 0 24px;
+  }
+
+  .hero-about .hero-lead {
+    font-size: 19px;
+  }
+
+  .hero-about p {
+    font-size: 15px;
+  }
 }
 
 /* ---------- Частые вопросы ---------- */
@@ -1993,19 +2000,6 @@ picture {
 }
 
 @media (max-width: 800px) {
-  .intro-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .intro h2 {
-    font-size: 28px;
-  }
-
-  .intro .intro-lead {
-    font-size: 19px;
-  }
-
   .faq-item {
     padding: 0 16px;
   }
