@@ -652,6 +652,7 @@ section {
 .hero-bg {
   position: relative;
   background: #1f1c18 url(../img/hero-2.jpg) center 45%/cover no-repeat;
+  background: #1f1c18 image-set(url(../img/hero-2.webp) type("image/webp"), url(../img/hero-2.jpg) type("image/jpeg")) center 45%/cover no-repeat;
   color: #fff;
 }
 
@@ -1102,6 +1103,7 @@ section,
   inset: 0;
   z-index: -2;
   background: url(../img/hero-2.jpg) center 45% / cover no-repeat;
+  background: image-set(url(../img/hero-2.webp) type("image/webp"), url(../img/hero-2.jpg) type("image/jpeg")) center 45% / cover no-repeat;
   animation: hero-drift 40s ease-in-out infinite alternate;
 }
 
@@ -1904,4 +1906,111 @@ body::before {
   font-family: Roboto, "Segoe UI", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 400;
+}
+
+/* ---------- <picture> не должен влиять на раскладку ---------- */
+picture {
+  display: contents;
+}
+
+/* ---------- О студии (текст для поиска) ---------- */
+.intro-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.intro h2 {
+  font: 38px/1.15 Georgia, serif;
+  font-weight: 400;
+  margin: 0;
+}
+
+.intro p {
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0 0 14px;
+}
+
+.intro .intro-lead {
+  font: 22px/1.45 Georgia, serif;
+  color: var(--ink);
+}
+
+.intro b {
+  color: var(--ink);
+}
+
+/* ---------- Частые вопросы ---------- */
+.faq {
+  display: grid;
+  gap: 10px;
+}
+
+.faq-item {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0 22px;
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  font: 24px/1 Georgia, serif;
+  color: var(--rose);
+  transition: transform .25s;
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq-item h3 {
+  font: 19px/1.3 Georgia, serif;
+  font-weight: 400;
+  margin: 0;
+}
+
+.faq-item p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 800px) {
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .intro h2 {
+    font-size: 28px;
+  }
+
+  .intro .intro-lead {
+    font-size: 19px;
+  }
+
+  .faq-item {
+    padding: 0 16px;
+  }
+
+  .faq-item h3 {
+    font-size: 17px;
+  }
 }

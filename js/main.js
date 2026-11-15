@@ -30,7 +30,7 @@
   function show(index) {
     current = (index + thumbs.length) % thumbs.length;
     var source = thumbs[current].querySelector('img');
-    bigImage.src = source.src;
+    bigImage.src = source.currentSrc || source.src;
     bigImage.alt = source.alt;
   }
 
