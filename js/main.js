@@ -109,10 +109,10 @@
 
   function updateArrows() {
     var max = masters.scrollWidth - masters.clientWidth;
-    prevButton.disabled = masters.scrollLeft <= 2;
-    nextButton.disabled = masters.scrollLeft >= max - 2;
+    prevButton.disabled = masters.scrollLeft <= 6;
+    nextButton.disabled = masters.scrollLeft >= max - 6;
     // Если все карточки помещаются, стрелки не нужны
-    prevButton.parentElement.hidden = max <= 2;
+    prevButton.parentElement.hidden = max <= 6;
   }
 
   prevButton.addEventListener('click', function () { masters.scrollBy({ left: -step() }); });
