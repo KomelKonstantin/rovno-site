@@ -291,10 +291,21 @@ section {
 }
 
 /* ---------- Мастера ---------- */
+/* Один ряд карточек, листается вбок (пальцем, колесом, стрелками) */
 .masters {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 18px;
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+
+.masters::-webkit-scrollbar {
+  display: none;
 }
 
 .master {
@@ -1222,32 +1233,77 @@ body::before {
   color: var(--muted);
 }
 
-.masters {
-  grid-template-columns: repeat(2, 1fr);
-}
-
 .master-head > div {
   min-width: 0;
 }
 
-@media (max-width: 800px) {
-  .masters {
-    grid-template-columns: minmax(0, 1fr);
-  }
+/* Компактная карточка мастера */
+.master {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+  padding: 20px;
 }
 
-@media (max-width: 420px) {
+.master-photo {
+  flex-basis: 72px;
+  height: 90px;
+  font-size: 30px;
+}
+
+.master h3 {
+  font-size: 24px;
+}
+
+.master-head .role {
+  margin: 2px 0 8px;
+}
+
+.master-price {
+  font-size: 19px;
+}
+
+.master ul {
+  margin: 12px 0 0;
+  font-size: 13px;
+}
+
+/* Стрелки прокрутки */
+.masters-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.masters-nav button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #e7d8d2;
+  background: var(--paper);
+  color: var(--ink);
+  font: 22px/1 Georgia, serif;
+  cursor: pointer;
+  transition: background .2s, color .2s, opacity .2s;
+}
+
+.masters-nav button:hover,
+.masters-nav button:focus-visible {
+  background: var(--ink);
+  color: #fff;
+}
+
+.masters-nav button:disabled {
+  opacity: .35;
+  cursor: default;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* Телефон: карточка почти на всю ширину, следующая выглядывает сбоку */
+@media (max-width: 800px) {
   .master {
-    padding: 22px 18px;
-  }
-
-  .master-photo {
-    flex-basis: 76px;
-    height: 96px;
-  }
-
-  .master h3 {
-    font-size: 26px;
+    flex-basis: 82%;
   }
 }
 

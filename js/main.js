@@ -2,6 +2,7 @@
 // 1. Кнопка «Показать ещё / Свернуть» в альбоме работ
 // 2. Просмотр фото работ и студии (lightbox): стрелки, Esc, клик по фону
 // 3. Шапка на телефоне прячется при прокрутке вниз
+// 4. Стрелки прокрутки в ряду мастеров
 
 (function () {
   'use strict';
@@ -95,4 +96,28 @@
   header.querySelectorAll('a').forEach(function (link) {
     link.addEventListener('focus', function () { header.classList.remove('is-hidden'); });
   });
+  /* ---------- 4. Ряд мастеров: стрелки ---------- */
+
+  var masters = document.querySelector('.masters');
+  var prevButton = document.querySelector('.masters-prev');
+  var nextButton = document.querySelector('.masters-next');
+
+  function step() {
+    var card = masters.querySelector('.master:not([hidden])');
+    return card ? card.getBoundingClientRect().width + 14 : 300;
+  }
+
+  function updateArrows() {
+    var max = masters.scrollWidth - masters.clientWidth;
+    prevButton.disabled = masters.scrollLeft <= 2;
+    nextButton.disabled = masters.scrollLeft >= max - 2;
+    // Если все карточки помещаются, стрелки не нужны
+    prevButton.parentElement.hidden = max <= 2;
+  }
+
+  prevButton.addEventListener('click', function () { masters.scrollBy({ left: -step() }); });
+  nextButton.addEventListener('click', function () { masters.scrollBy({ left: step() }); });
+  masters.addEventListener('scroll', updateArrows, { passive: true });
+  window.addEventListener('resize', updateArrows);
+  updateArrows();
 })();
