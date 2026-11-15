@@ -651,7 +651,7 @@ section {
 /* ---------- Hero с фоном ---------- */
 .hero-bg {
   position: relative;
-  background: #1f1c18 url(../img/hero.jpg) center 45%/cover no-repeat;
+  background: #1f1c18 url(../img/hero-2.jpg) center 45%/cover no-repeat;
   color: #fff;
 }
 
@@ -1101,7 +1101,7 @@ section,
   position: absolute;
   inset: 0;
   z-index: -2;
-  background: url(../img/hero.jpg) center 45% / cover no-repeat;
+  background: url(../img/hero-2.jpg) center 45% / cover no-repeat;
   animation: hero-drift 40s ease-in-out infinite alternate;
 }
 
