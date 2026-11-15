@@ -1329,15 +1329,23 @@ body::before {
     transform: none;
   }
 
+  /* Фото целиком (как на компьютере), но меньше — портрет в рамке по центру */
   .master-photo {
     grid-column: 1;
     grid-row: 1;
-    height: 250px;
+    height: auto;
+    padding: 22px 0 4px;
+    background: linear-gradient(180deg, #f1e8df, var(--paper));
     font-size: 64px;
   }
 
   .master-photo img {
-    object-position: center center;
+    width: 168px;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 24px rgba(45, 39, 32, .16);
   }
 
   .master-head > div:not(.master-photo) {
@@ -1377,8 +1385,8 @@ body::before {
     flex-basis: 86%;
   }
 
-  .master-photo {
-    height: 220px;
+  .master-photo img {
+    width: 150px;
   }
 }
 
