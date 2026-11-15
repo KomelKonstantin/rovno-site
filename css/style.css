@@ -1559,3 +1559,154 @@ body::before {
     padding: 150px 0 140px;
   }
 }
+
+/* ---------- Разные кнопки на плашках дизайнов ---------- */
+.design .btn-rose {
+  background: var(--rose);
+  color: var(--ink);
+}
+
+.design .btn-ghost {
+  background: transparent;
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .85);
+}
+
+.design .btn {
+  white-space: nowrap;
+  transition: transform .25s, background .25s;
+}
+
+.design .btn:hover {
+  transform: translateY(-2px);
+}
+
+.design .btn-ghost:hover {
+  background: rgba(255, 255, 255, .14);
+}
+
+/* ---------- Карта в стиле Яндекс Карт ---------- */
+.ymap {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .1), 0 14px 34px rgba(45, 39, 32, .1);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.ymap-view {
+  position: relative;
+  flex: 1;
+  display: block;
+  min-height: 330px;
+  overflow: hidden;
+  background: #f2efe9;
+}
+
+.ymap-view img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
+}
+
+.ymap-view:hover img {
+  transform: scale(1.03);
+}
+
+.ymap-hint {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #fff;
+  color: #000;
+  font-size: 13px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+}
+
+.ymap-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-top: 1px solid #eee;
+}
+
+.ymap-pin {
+  width: 30px;
+  height: 30px;
+  flex: none;
+}
+
+.ymap-info {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.ymap-info b {
+  display: block;
+  font-size: 15px;
+  color: #000;
+}
+
+.ymap-info > span {
+  font-size: 13px;
+  color: #808080;
+}
+
+.ymap-star {
+  color: #fc0;
+}
+
+.ymap-btn {
+  flex: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #f2f2f2;
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background .2s;
+}
+
+.ymap-btn:hover {
+  background: #e6e6e6;
+}
+
+.ymap-route {
+  background: #fc0;
+}
+
+.ymap-route:hover {
+  background: #f5c400;
+}
+
+@media (max-width: 800px) {
+  .ymap-view {
+    flex: none;
+    min-height: 0;
+    height: 300px;
+  }
+
+  .ymap-bar {
+    flex-wrap: wrap;
+  }
+
+  .ymap-info {
+    flex-basis: calc(100% - 40px);
+  }
+
+  .ymap-btn {
+    flex: 1;
+    text-align: center;
+  }
+}
