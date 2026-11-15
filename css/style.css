@@ -1337,7 +1337,7 @@ body::before {
   }
 
   .master-photo img {
-    object-position: center 28%;
+    object-position: center center;
   }
 
   .master-head > div:not(.master-photo) {
